@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hemanth Kumar Mantri</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Principal Software Engineer at Harness. Cloud infrastructure, virtualization, distributed systems and intelligent CI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one left-aligned column. The career is drawn as a stack of layers, newest on top,
+   from CI infrastructure down to RAID. Everything else stays quiet around it. */
+:root {
+  --bg: #F2F5F8;
+  --surface: #FFFFFF;
+  --fg: #111A26;
+  --muted: #4F5D6D;
+  --line: #D3DBE4;
+  --accent: #0F766E;
+  --accent-ink: #FFFFFF;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E141B;
+    --surface: #151D27;
+    --fg: #E6EBF1;
+    --muted: #9AA7B5;
+    --line: #27323F;
+    --accent: #5EEAD4;
+    --accent-ink: #0E141B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E141B;
+  --surface: #151D27;
+  --fg: #E6EBF1;
+  --muted: #9AA7B5;
+  --line: #27323F;
+  --accent: #5EEAD4;
+  --accent-ink: #0E141B;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 1rem/1.65 var(--body);
+  padding-block: 40px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1040px; margin-inline: auto; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+.eyebrow, .label, .mono {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.eyebrow { color: var(--accent); }
+.label { color: var(--muted); }
+
+/* Hero */
+.hero { padding-bottom: 48px; border-bottom: 1px solid var(--line); }
+.hero h1 {
+  font-size: clamp(2.6rem, 8vw, 5.25rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  margin-top: 14px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 40px 56px;
+  margin-top: 36px;
+  align-items: start;
+}
+.lede { font-size: 1.1875rem; line-height: 1.6; max-width: 60ch; }
+.lede + .lede { margin-top: 16px; color: var(--muted); font-size: 1.0625rem; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.btn {
+  display: inline-flex; align-items: center;
+  padding: 9px 16px;
+  font: 500 0.9375rem/1.2 var(--body);
+  text-decoration: none;
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+}
+.btn:hover { background: var(--fg); color: var(--bg); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.08); background: var(--accent); color: var(--accent-ink); }
+
+.facts { display: grid; gap: 18px; margin: 0; }
+.facts div { border-top: 1px solid var(--line); padding-top: 10px; }
+.facts dt { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 4px 0 0; font-size: 0.9688rem; }
+
+/* Sections */
+.band { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 20px 40px; padding-block: 52px; border-bottom: 1px solid var(--line); }
+.band:last-of-type { border-bottom: 0; }
+.band h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); font-weight: 650; line-height: 1.15; letter-spacing: -0.02em; }
+.intro { color: var(--muted); max-width: 62ch; margin-top: 10px; }
+
+/* The stack */
+.stack { display: grid; gap: 10px; margin-top: 28px; }
+.layer {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 8px 28px;
+  padding: 20px 22px 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 8px solid color-mix(in srgb, var(--accent) var(--step), var(--bg));
+  border-radius: 4px;
+}
+.layer-meta { display: grid; gap: 2px; align-content: start; font-size: 0.875rem; color: var(--muted); }
+.layer-meta .yrs { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--fg); }
+.layer-meta .org { font-weight: 600; color: var(--fg); font-size: 1rem; }
+.layer h3 { font-size: 1.25rem; font-weight: 650; letter-spacing: -0.01em; line-height: 1.25; }
+.role { color: var(--muted); font-size: 0.9375rem; margin-top: 2px; }
+.layer ul { margin-top: 12px; display: grid; gap: 8px; }
+.layer li { position: relative; padding-left: 18px; font-size: 0.9688rem; }
+.layer li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 8px; height: 1px; background: var(--muted); }
+.stack-note { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-top: 14px; letter-spacing: 0.04em; }
+
+/* Expertise */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 36px; margin: 0; }
+.skills dt { font-family: var(--display); font-weight: 650; font-size: 1.0625rem; }
+.skills dd { margin: 6px 0 0; color: var(--muted); font-size: 0.9688rem; }
+
+/* Rows: patents, repos */
+.rows { display: grid; }
+.row {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 150px;
+  gap: 4px 20px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  align-items: baseline;
+}
+.row:last-child { border-bottom: 1px solid var(--line); }
+.row .num { font-family: var(--mono); font-size: 0.8125rem; overflow-wrap: anywhere; }
+.row .status { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-align: right; }
+.row .status.granted { color: var(--accent); }
+.repos .row { grid-template-columns: 220px minmax(0, 1fr) 70px; }
+.repos .row .name { font-family: var(--mono); font-size: 0.875rem; font-weight: 500; overflow-wrap: anywhere; }
+
+.edu { display: grid; gap: 14px; }
+.edu p span { display: block; color: var(--muted); font-size: 0.9375rem; }
+.edu strong { font-weight: 600; }
+
+/* Contact */
+.email-line { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 18px; }
+.email-line code { font-family: var(--mono); font-size: 1rem; user-select: all; overflow-wrap: anywhere; }
+.foot { margin-top: 32px; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; }
+
+@media (max-width: 820px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .band { grid-template-columns: minmax(0, 1fr); padding-block: 40px; }
+  .layer { grid-template-columns: minmax(0, 1fr); padding: 18px 16px 20px; }
+  .layer-meta { grid-template-columns: repeat(auto-fit, minmax(0, max-content)); gap: 2px 14px; }
+  .skills { grid-template-columns: minmax(0, 1fr); }
+  .row, .repos .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .row .status { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Principal Software Engineer</p>
+    <h1>Hemanth Kumar Mantri</h1>
+    <div class="hero-grid">
+      <div>
+        <p class="lede">I build the infrastructure behind cloud CI at Harness: the virtual machines and bare-metal hosts that run customer builds, and the caching and test intelligence that make those builds faster. Before Harness, I spent more than eight years at Nutanix on the control plane of the AHV hypervisor.</p>
+        <p class="lede">About 17 years in cloud infrastructure, virtualization and distributed systems. Named inventor on several U.S. patents.</p>
+        <div class="links">
+          <a class="btn primary" href="https://github.com/mantri">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/mantri/">LinkedIn</a>
+          <a class="btn" href="#contact">Email</a>
+        </div>
+      </div>
+      <dl class="facts">
+        <div><dt>Now</dt><dd>Harness, Mountain View, California</dd></div>
+        <div><dt>Before</dt><dd>Nutanix, 2013 to 2021, AHV virtualization</dd></div>
+        <div><dt>Writes</dt><dd>Python, Go, Java, C/C++</dd></div>
+        <div><dt>Studied</dt><dd>Computer Science at UT Austin and BITS Pilani</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="band" id="experience">
+    <div><p class="label">Experience</p></div>
+    <div>
+      <h2>A stack of layers, from RAID up to CI</h2>
+      <p class="intro">Each move went roughly one layer higher: disk arrays, file systems, hypervisors, and now build pipelines.</p>
+
+      <ol class="stack" style="list-style:none;padding:0;margin-bottom:0">
+        <li class="layer" style="--step:100%">
+          <div class="layer-meta"><span class="yrs">Dec 2021 to now</span><span class="org">Harness</span><span>Mountain View, CA</span></div>
+          <div>
+            <h3>Build and CI infrastructure</h3>
+            <p class="role">Principal Software Engineer</p>
+            <ul>
+              <li>Architected and delivered the VM and bare-metal infrastructure management behind Harness Cloud Builds and cloud CI compute.</li>
+              <li>Contributed to Test Intelligence, Cache Intelligence (automated dependency caching), Build Intelligence (automated build caching) and Docker Layer Caching.</li>
+              <li>Led the proof of concept and productization of AI root-cause analysis for build and test failures. Contributed to agentic workflows for bug triage and plugin vulnerability management.</li>
+              <li>Supported the Playwright Executor and contributed to Harness Code Coverage and Test Management.</li>
+              <li>Assessed acquisitions, partnerships and infrastructure vendors to inform build-versus-buy decisions.</li>
+              <li>Worked with engineering teams in the United States, Canada, India and Serbia on architecture reviews, incident response, patents, blogs, webinars and customer proofs of value.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="layer" style="--step:76%">
+          <div class="layer-meta"><span class="yrs">Jun 2013 to Dec 2021</span><span class="org">Nutanix</span><span>San Jose, CA</span></div>
+          <div>
+            <h3>Hypervisor and VM control plane</h3>
+            <p class="role">Staff Engineer, Senior Engineering Manager</p>
+            <ul>
+              <li>Technical lead for the AHV VM Control Plane, which holds VM state and lifecycle for Nutanix's KVM-based hypervisor.</li>
+              <li>Designed and built support for Microsoft Hyper-V, cross-cluster live migration, and compute-only nodes that scale compute separately from storage in hyperconverged clusters.</li>
+              <li>Contributed to the AHV Gateway for host communication, synchronous replication, and NuCLEI, an intent-based command line for distributed virtual infrastructure.</li>
+              <li>Built a virtual-disk read/write API for Citrix XenDesktop and a disk-monitoring service for recovery and break-fix workflows.</li>
+              <li>Combined hands-on engineering with design reviews and team leadership across several virtualization initiatives.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="layer" style="--step:54%">
+          <div class="layer-meta"><span class="yrs">May to Aug 2012</span><span class="org">Apple</span><span>Cupertino, CA</span></div>
+          <div>
+            <h3>File systems</h3>
+            <p class="role">Network File Systems Intern</p>
+            <ul>
+              <li>Designed and implemented a macOS framework that lets sandboxed applications share data over NFS.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="layer" style="--step:36%">
+          <div class="layer-meta"><span class="yrs">Jul 2009 to Jul 2011</span><span class="org">NetApp</span><span>Bangalore, India</span></div>
+          <div>
+            <h3>Block storage and RAID</h3>
+            <p class="role">RAID Development Engineer</p>
+            <ul>
+              <li>Improved RAID reconstruction and volume recovery using disk labels.</li>
+              <li>Worked on lost-write detection and correction in RAID I/O workflows.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="layer" style="--step:22%">
+          <div class="layer-meta"><span class="yrs">Jul 2008 to Jul 2009</span><span class="org">NetApp</span><span>Bangalore, India</span></div>
+          <div>
+            <h3>Storage and networking research</h3>
+            <p class="role">Research Intern, Advanced Technology Group</p>
+            <ul>
+              <li>Built content-management solutions on HDFS and HBase.</li>
+              <li>Developed an RDMA-based Shared Write Address Protocol for high-performance networking.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+      <p class="stack-note">Newest at the top.</p>
+    </div>
+  </section>
+
+  <section class="band" id="expertise">
+    <div><p class="label">Expertise</p></div>
+    <dl class="skills">
+      <div><dt>Compute and virtualization</dt><dd>KVM-based Nutanix AHV, Microsoft Hyper-V, hypervisor control planes, VM lifecycle management, live migration, bare-metal provisioning, compute-only and hyperconverged architectures, disaster recovery.</dd></div>
+      <div><dt>Cloud and distributed systems</dt><dd>Infrastructure as a Service, multi-cloud API translation, distributed-system architecture, storage recovery, RAID, high-performance networking, RDMA, NFS.</dd></div>
+      <div><dt>Developer platforms and AI</dt><dd>CI/CD platforms, build infrastructure, test intelligence, automated dependency and build caching, Kubernetes, Docker, Terraform, Jenkins, agentic workflows, AI-assisted failure analysis.</dd></div>
+      <div><dt>Languages</dt><dd>Python, Go, Java, C/C++.</dd></div>
+    </dl>
+  </section>
+
+  <section class="band" id="patents">
+    <div><p class="label">Patents</p></div>
+    <div>
+      <h2>Seven granted, three published applications</h2>
+      <div class="rows" style="margin-top:24px">
+        <div class="row"><span class="num">US 2026/0126960 A1</span><span>Intelligent migration of CI/CD workflow server pipelines</span><span class="status">Application</span></div>
+        <div class="row"><span class="num">US 2024/0320135 A1</span><span>Intelligent concurrent testing for test cycle time reduction</span><span class="status">Application</span></div>
+        <div class="row"><span class="num">US 12,093,717 B2</span><span>Assigning a virtual disk to a virtual machine hosted on a compute node for improved network performance</span><span class="status granted">Granted</span></div>
+        <div class="row"><span class="num">US 11,609,831 B2</span><span>Virtual machine configuration update technique in a disaster recovery environment</span><span class="status granted">Granted</span></div>
+        <div class="row"><span class="num">US 11,150,932 B2</span><span>Virtual disk management for virtual disks accessed from compute only nodes</span><span class="status granted">Granted</span></div>
+        <div class="row"><span class="num">US 10,887,102 B2</span><span>Intent framework</span><span class="status granted">Granted</span></div>
+        <div class="row"><span class="num">US 10,877,791 B2</span><span>Live migration of virtual machines between compute only nodes and hyperconverged nodes</span><span class="status granted">Granted</span></div>
+        <div class="row"><span class="num">US 10,831,525 B2</span><span>Intelligent assignment of virtual machines to compute only or hyper converged nodes</span><span class="status granted">Granted</span></div>
+        <div class="row"><span class="num">US 2019/0384678 A1</span><span>System and method for managing backup and restore of objects over cloud platforms</span><span class="status">Application</span></div>
+        <div class="row"><span class="num">US 10,416,996 B1</span><span>System and method for translating application programming interfaces for cloud platforms</span><span class="status granted">Granted</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="code">
+    <div><p class="label">On GitHub</p></div>
+    <div>
+      <h2>Earlier code in the open</h2>
+      <p class="intro">Distributed and parallel systems work from my graduate years. Most of my recent work is in private repositories.</p>
+      <div class="rows repos" style="margin-top:24px">
+        <div class="row"><a class="name" href="https://github.com/mantri/graph-solver">graph-solver</a><span>OpenMP and Pthreads multi-level graph partitioning solver for weighted undirected graphs.</span><span class="status">C</span></div>
+        <div class="row"><a class="name" href="https://github.com/mantri/Paxos">Paxos</a><span>Simulation of the basic Paxos algorithm in Orc.</span><span class="status">Orc</span></div>
+        <div class="row"><a class="name" href="https://github.com/mantri/distributed_snapshot_rollback">distributed_snapshot_rollback</a><span>Distributed snapshot and rollback using the Chandy-Lamport algorithm.</span><span class="status"></span></div>
+        <div class="row"><a class="name" href="https://github.com/mantri/parallel_algorithms">parallel_algorithms</a><span>Parallel algorithms in MPI, OpenMP and Pthreads.</span><span class="status">C</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="education">
+    <div><p class="label">Education</p></div>
+    <div class="edu">
+      <p><strong>The University of Texas at Austin</strong><span>M.S., Computer Science, 2011 to 2013</span></p>
+      <p><strong>Birla Institute of Technology and Science, Pilani</strong><span>B.E., Computer Science, and M.Sc., Economics, 2004 to 2009</span></p>
+    </div>
+  </section>
+
+  <section class="band" id="contact">
+    <div><p class="label">Contact</p></div>
+    <div>
+      <h2>Get in touch</h2>
+      <p class="intro">Email is the quickest way. I am also on LinkedIn and GitHub.</p>
+      <div class="email-line">
+        <code id="email">mantri.hemanth@gmail.com</code>
+        <button class="btn" id="copy" type="button">Copy address</button>
+      </div>
+      <div class="links">
+        <a class="btn" href="https://www.linkedin.com/in/mantri/">linkedin.com/in/mantri</a>
+        <a class="btn" href="https://github.com/mantri">github.com/mantri</a>
+      </div>
+      <p class="foot">Updated November 2026</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById("copy");
+  var code = document.getElementById("email");
+  btn.addEventListener("click", function () {
+    var text = code.textContent.trim();
+    function done() {
+      btn.textContent = "Copied";
+      setTimeout(function () { btn.textContent = "Copy address"; }, 1800);
+    }
+    function fallback() {
+      var r = document.createRange();
+      r.selectNodeContents(code);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      btn.textContent = "Selected";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
